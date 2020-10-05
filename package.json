@@ -1,0 +1,46 @@
+{
+  "name": "challenge-ping-tree-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "nyc ava && npm run deps && standard",
+    "deps": "depcheck ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^3.13.0",
+    "depcheck": "^1.2.0",
+    "fakeredis": "^2.0.0",
+    "nodemon": "^2.0.4",
+    "nyc": "^15.1.0",
+    "servertest": "^1.2.1",
+    "standard": "^14.3.4"
+  },
+  "dependencies": {
+    "corsify": "^2.1.0",
+    "cuid": "^2.1.8",
+    "dotenv": "^8.2.0",
+    "healthpoint": "^1.0.0",
+    "http-hash-router": "^2.0.1",
+    "productionize": "^4.1.0",
+    "redis": "^3.0.2",
+    "req-logger": "^2.0.0",
+    "send-data": "^8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Interlincx/challenge-ping-tree.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Interlincx/challenge-ping-tree/issues"
+  },
+  "homepage": "https://github.com/Interlincx/challenge-ping-tree#readme",
+  "engines": {
+    "node": "12",
+    "npm": "6"
+  }
+}
