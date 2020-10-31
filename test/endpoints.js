@@ -47,10 +47,10 @@ test.serial.cb('create a target returns OK', function (t) {
   }
 })
 
-test.serial.cb('index returns all targes', function (t) {
+test.serial.cb('index returns all targes', async function (t) {
   const url = '/api/targets'
   conn.deleteAll()
-  conn.addNew(targetSample)
+  await conn.addNew(targetSample)
 
   servertest(server(), url, { encoding: 'json' }, function (err, res) {
     t.falsy(err, 'no error')
@@ -64,7 +64,7 @@ test.serial.cb('index returns all targes', function (t) {
 test.serial.cb('get returns the proper target', function (t) {
   const url = '/api/target/0'
   conn.deleteAll()
-  conn.addNew(targetSample)
+  await conn.addNew(targetSample)
 
   servertest(server(), url, { encoding: 'json' }, function (err, res) {
     t.falsy(err, 'no error')
