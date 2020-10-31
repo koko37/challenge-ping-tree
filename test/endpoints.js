@@ -47,10 +47,10 @@ test.serial.cb('create a target returns OK', function (t) {
   }
 })
 
-test.serial.cb('index returns all targes', async function (t) {
+test.serial.cb('index returns all targes', function (t) {
   const url = '/api/targets'
   conn.deleteAll()
-  await conn.addNew(targetSample)
+  conn.addNew(targetSample)
 
   servertest(server(), url, { encoding: 'json' }, function (err, res) {
     t.falsy(err, 'no error')
@@ -64,7 +64,7 @@ test.serial.cb('index returns all targes', async function (t) {
 test.serial.cb('get returns the proper target', function (t) {
   const url = '/api/target/0'
   conn.deleteAll()
-  await conn.addNew(targetSample)
+  conn.addNew(targetSample)
 
   servertest(server(), url, { encoding: 'json' }, function (err, res) {
     t.falsy(err, 'no error')
@@ -105,10 +105,10 @@ test.serial.cb('route returns reject decision', function (t) {
     timestamp: '2018-07-19T23:28:59.513Z'
   }
 
-  servertest(server(), url, { encoding: 'json', method: 'POST' }, onDecisionResponse)
+  servertest(server(), url, { encoding: 'json', method: 'POST' }, onRejectResponse)
     .end(JSON.stringify(visitorInfo))
 
-  function onDecisionResponse (err, res) {
+  function onRejectResponse (err, res) {
     t.falsy(err, 'no error')
     t.is(res.statusCode, 200, 'correct statusCode')
     t.is(res.body.decision, 'reject', 'return reject decision')
@@ -132,7 +132,7 @@ test.serial.cb('route returns remaining url', function (t) {
   function onDecisionResponse (err, res) {
     t.falsy(err, 'no error')
     t.is(res.statusCode, 200, 'correct statusCode')
-    t.is(res.body.url, targetSample.url, 'return reject decision')
+    t.is(res.body.url, targetSample.url, 'return url')
     t.end()
   }
 })
